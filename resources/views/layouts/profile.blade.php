@@ -24,7 +24,7 @@
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
-        <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
@@ -45,10 +45,7 @@
                         </ul>
 
                         <!-- Right Side Of Navbar -->
-                        
-                        <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
-
                         {{-- 以下を追記 --}}
                         <!-- Authentication Links -->
                         {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
@@ -75,7 +72,6 @@
                             </li>
                             @endguest
                             {{-- 以上までを追記 --}}
-                        
                         </ul>
                     </div>
                 </div>

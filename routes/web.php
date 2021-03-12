@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +17,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('tests/test', 'App\Http\Controllers\TestController@index');
-Auth::routes();
+//Route::get('tests/test', 'App\Http\Controllers\TestController@index');
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('news/create', 'App\Http\Controllers\Admin\NewsController@add');
-    Route::get('profile/create', 'App\Http\Controllers\Admin\ProfileController@add');
-    Route::get('profile/edit', 'App\Http\Controllers\Admin\ProfileController@edit');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+    Route::get('news/create', 'Admin\NewsController@add');
+    Route::post('news/create', 'Admin\NewsController@create');
+    Route::get('profile/create', 'Admin\ProfileController@add');
+    Route::post('profile/create', 'Admin\ProfileController@create');
+    Route::get('profile/edit', 'Admin\ProfileController@edit');
+    Route::post('profile/edit', 'Admin\ProfileController@update');
+    
 });
+Auth::routes();

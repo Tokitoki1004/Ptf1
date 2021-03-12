@@ -109,9 +109,9 @@ return [
         'caution' => '注意事項',
         'your_name' => '名前',
         'title' => 'タイトル',
+        'body' => '本文',
         'gender' => '性別',
         'age' => '年齢',
-        'contact' => 'お問い合わせ内容',
         
     ],
 
