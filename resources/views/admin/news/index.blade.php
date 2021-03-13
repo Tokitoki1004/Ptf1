@@ -42,6 +42,18 @@
                                     <th>{{ $news->id }}</th>
                                     <td>{{ \Str::limit($news->title, 100) }}</td>
                                     <td>{{ \Str::limit($news->body, 250) }}</td>
+                                    <td>
+                                        <a href="{{ action('Admin\NewsController@edit', ['id' => $news->id]) }}">編集</a>
+                                    </td>    
+                                    <td>
+                                        <form method="POST" action="{{ route('news.delete', ['id' => $news->id]) }}" id="delete_{{ $news->id }}" >
+                                        @csrf
+                                         <a href="#" class="btn btn-danger" data-id="{{ $news->id }}" onclick="deletePost(this);">削除</a>
+                                        </form>
+                                    </td>
+                                           
+                    
+                                    
                                 </tr>
                             @endforeach
                         </tbody>
@@ -50,4 +62,13 @@
             </div>
         </div>
     </div>
+    <script>
+<!--
+function deletePost(e) {
+    'use strict';
+    if (confirm('本当に削除してもいいですか？')) {
+        document.getElementById('delete_' + e.dataset.id).submit();
+    }
+}
+</script>
 @endsection
