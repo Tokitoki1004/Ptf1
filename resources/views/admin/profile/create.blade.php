@@ -53,7 +53,8 @@
 
                     
                     {{ csrf_field() }}
-                    <input type="submit" class="btn btn-primary" value="更新">
+                    <input type="submit" class="btn btn-primary" value="作成">
+                    <a href="{{ action('Admin\ProfileController@index') }}" role="button" class="btn btn-primary">プロフィール一覧</a>
                 </form>
             </div>
         </div>
