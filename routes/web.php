@@ -41,5 +41,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::post('profile/create', 'Admin\ProfileController@create');
     Route::get('profile/edit', 'Admin\ProfileController@edit');
     Route::post('profile/edit', 'Admin\ProfileController@update');
+    Route::get('profile/index', 'Admin\ProfileController@index');
+    Route::post('profile/delete', 'Admin\ProfileController@delete')->name('profile.delete');
 });
+
 Auth::routes();
+Route::get('/', 'NewsController@index');

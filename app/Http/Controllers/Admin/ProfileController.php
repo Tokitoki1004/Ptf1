@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 
+
 class ProfileController extends Controller
 {
     public function add()
@@ -48,9 +49,32 @@ class ProfileController extends Controller
       $profile_form = $request->all();
       //dd($profile_form);
       $profile->fill($profile_form)->save();
-        return view('admin/profile/create');
+      $profiles = profile::all();
+      //dd($profiles);
+      return view('admin.profile.index', compact('profiles'));
+      
     }
-    
+    public function index()
+  {
+      $profiles = profile::all();
+      //dd($profiles);
+      return view('admin.profile.index', compact('profiles'));
+  }
+  public function delete(Request $request)
+  {
+      
+      // 該当するNews Modelを取得
+      //$news = News::find($request->id);
+      // 削除する
+      //$news->delete();
+      //return redirect('admin/news/');
+
+      $profile = profile::find($request->id);
+      $profile->delete();
+      $profiles = profile::all();
+      //dd($profiles);
+      return view('admin.profile.index', compact('profiles'));
+  }  
 }
 
 
