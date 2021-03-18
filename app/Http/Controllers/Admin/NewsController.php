@@ -111,4 +111,15 @@ class NewsController extends Controller
       $news->delete();
       return redirect('admin/news');
   }  
+  public function show(Request $request)
+    {
+        $news = news::find($request->id);
+       // dd($news);
+
+        //$gender = CheckFormData::checkGender($contact);
+        //$age = CheckFormData::checkAge($contact);
+
+
+        return view('admin.news.show', compact('news'));
+    }
 }

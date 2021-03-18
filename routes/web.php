@@ -29,12 +29,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('news/create', 'Admin\NewsController@add');
     Route::post('news/create', 'Admin\NewsController@create');
-    Route::get('news/edit', 'Admin\NewsController@edit');
+    Route::get('news/edit', 'Admin\NewsController@edit')->name('news.edit');
     Route::post('news/edit', 'Admin\NewsController@update');
     Route::post('news/delete', 'Admin\NewsController@delete')->name('news.delete');
-    
     Route::get('news', 'Admin\NewsController@index');
-});
+    Route::get('news/show', 'Admin\NewsController@show')->name('news.show');
+    });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('profile/create', 'Admin\ProfileController@add');

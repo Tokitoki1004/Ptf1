@@ -42,6 +42,7 @@
                                     <th>{{ $news->id }}</th>
                                     <td>{{ \Str::limit($news->title, 100) }}</td>
                                     <td>{{ \Str::limit($news->body, 250) }}</td>
+                                    <td><a href="{{ route('news.show', ['id'=> $news->id ]) }}">詳細を見る</a></td>
                                     <td>
                                         <a href="{{ action('Admin\NewsController@edit', ['id' => $news->id]) }}">編集</a>
                                     </td>    
